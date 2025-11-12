@@ -71,11 +71,11 @@ src/br/com/zelo/
 
 | Componente | Tecnologia |
 |:---:|---|
-| 💻 **Linguagem** | Java 21+ (LTS) |
+| 💻 **Linguagem** | Java 24 (LTS) |
 | 🎨 **Interface** | Java Swing (NetBeans GUI Builder) |
-| 📦 **Banco de Dados** | PostgreSQL 15+ |
+| 📦 **Banco de Dados** | PostgreSQL 9.8 |
 | 🔌 **Driver SQL** | PostgreSQL JDBC |
-| 🧰 **IDE** | Apache NetBeans 18+ |
+| 🧰 **IDE** | Apache NetBeans IDE 27 |
 | 📦 **Build** | Maven |
 | 🌐 **Versionamento** | Git & GitHub |
 
