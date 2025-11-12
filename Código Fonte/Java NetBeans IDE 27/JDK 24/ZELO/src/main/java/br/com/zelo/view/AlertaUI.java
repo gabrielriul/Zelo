@@ -51,27 +51,27 @@ public class AlertaUI extends javax.swing.JDialog {
         setTitle("ZELO - HORA DO REMÉDIO!");
         setAlwaysOnTop(true); // Faz o pop-up pular na frente de tudo
 
-        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24));
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitulo.setText("Hora de tomar seu remédio!");
 
-        lblNomeMedicamento.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblNomeMedicamento.setFont(new java.awt.Font("Segoe UI", 1, 36));
         lblNomeMedicamento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNomeMedicamento.setText("[Nome do Remédio]");
 
-        lblHora.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        lblHora.setFont(new java.awt.Font("Segoe UI", 0, 36));
         lblHora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHora.setText("00:00");
 
         txtDetalhes.setEditable(false);
         txtDetalhes.setColumns(20);
-        txtDetalhes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtDetalhes.setFont(new java.awt.Font("Segoe UI", 0, 14));
         txtDetalhes.setRows(3);
         txtDetalhes.setText("Dosagem:\nForma:\nInstruções:");
         jScrollPane1.setViewportView(txtDetalhes);
 
-        btnAdiar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnAdiar.setText("Adiar 5 min (RF12)");
+        btnAdiar.setFont(new java.awt.Font("Segoe UI", 0, 18));
+        btnAdiar.setText("Adiar 5 minutos");
         btnAdiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdiarActionPerformed(evt);
@@ -79,9 +79,9 @@ public class AlertaUI extends javax.swing.JDialog {
         });
 
         btnJaTomei.setBackground(new java.awt.Color(0, 153, 51));
-        btnJaTomei.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnJaTomei.setFont(new java.awt.Font("Segoe UI", 1, 18));
         btnJaTomei.setForeground(new java.awt.Color(255, 255, 255));
-        btnJaTomei.setText("Já tomei (RF10)");
+        btnJaTomei.setText("Já tomei");
         btnJaTomei.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnJaTomeiActionPerformed(evt);

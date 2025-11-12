@@ -1,21 +1,21 @@
-C:\Users\grp93\OneDrive\Documentos\NetBeansProjects\ZELO\src\main\java\br\com\zelo\controller\LembreteController.java
-C:\Users\grp93\OneDrive\Documentos\NetBeansProjects\ZELO\src\main\java\br\com\zelo\controller\MedicamentoController.java
-C:\Users\grp93\OneDrive\Documentos\NetBeansProjects\ZELO\src\main\java\br\com\zelo\controller\UsuarioController.java
-C:\Users\grp93\OneDrive\Documentos\NetBeansProjects\ZELO\src\main\java\br\com\zelo\dao\ConexaoBD.java
-C:\Users\grp93\OneDrive\Documentos\NetBeansProjects\ZELO\src\main\java\br\com\zelo\dao\ILembreteDAO.java
-C:\Users\grp93\OneDrive\Documentos\NetBeansProjects\ZELO\src\main\java\br\com\zelo\dao\IMedicamentoDAO.java
-C:\Users\grp93\OneDrive\Documentos\NetBeansProjects\ZELO\src\main\java\br\com\zelo\dao\IUsuarioDAO.java
-C:\Users\grp93\OneDrive\Documentos\NetBeansProjects\ZELO\src\main\java\br\com\zelo\dao\LembreteDAO.java
-C:\Users\grp93\OneDrive\Documentos\NetBeansProjects\ZELO\src\main\java\br\com\zelo\dao\MedicamentoDAO.java
-C:\Users\grp93\OneDrive\Documentos\NetBeansProjects\ZELO\src\main\java\br\com\zelo\dao\UsuarioDAO.java
-C:\Users\grp93\OneDrive\Documentos\NetBeansProjects\ZELO\src\main\java\br\com\zelo\model\Lembrete.java
-C:\Users\grp93\OneDrive\Documentos\NetBeansProjects\ZELO\src\main\java\br\com\zelo\model\Medicamento.java
-C:\Users\grp93\OneDrive\Documentos\NetBeansProjects\ZELO\src\main\java\br\com\zelo\model\Usuario.java
-C:\Users\grp93\OneDrive\Documentos\NetBeansProjects\ZELO\src\main\java\br\com\zelo\service\AgendadorServico.java
-C:\Users\grp93\OneDrive\Documentos\NetBeansProjects\ZELO\src\main\java\br\com\zelo\util\VerificadorFrequencia.java
-C:\Users\grp93\OneDrive\Documentos\NetBeansProjects\ZELO\src\main\java\br\com\zelo\view\AlertaUI.java
-C:\Users\grp93\OneDrive\Documentos\NetBeansProjects\ZELO\src\main\java\br\com\zelo\view\TelaAgendamento.java
-C:\Users\grp93\OneDrive\Documentos\NetBeansProjects\ZELO\src\main\java\br\com\zelo\view\TelaCadastro.java
-C:\Users\grp93\OneDrive\Documentos\NetBeansProjects\ZELO\src\main\java\br\com\zelo\view\TelaGerenciarMedicamentos.java
-C:\Users\grp93\OneDrive\Documentos\NetBeansProjects\ZELO\src\main\java\br\com\zelo\view\TelaLogin.java
-C:\Users\grp93\OneDrive\Documentos\NetBeansProjects\ZELO\src\main\java\br\com\zelo\view\TelaPrincipal.java
+C:\Users\grp93\OneDrive\Documentos\GitHub\Zelo\Código Fonte\Java NetBeans IDE 27\JDK 24\ZELO\src\main\java\br\com\zelo\controller\LembreteController.java
+C:\Users\grp93\OneDrive\Documentos\GitHub\Zelo\Código Fonte\Java NetBeans IDE 27\JDK 24\ZELO\src\main\java\br\com\zelo\controller\MedicamentoController.java
+C:\Users\grp93\OneDrive\Documentos\GitHub\Zelo\Código Fonte\Java NetBeans IDE 27\JDK 24\ZELO\src\main\java\br\com\zelo\controller\UsuarioController.java
+C:\Users\grp93\OneDrive\Documentos\GitHub\Zelo\Código Fonte\Java NetBeans IDE 27\JDK 24\ZELO\src\main\java\br\com\zelo\dao\ConexaoBD.java
+C:\Users\grp93\OneDrive\Documentos\GitHub\Zelo\Código Fonte\Java NetBeans IDE 27\JDK 24\ZELO\src\main\java\br\com\zelo\dao\ILembreteDAO.java
+C:\Users\grp93\OneDrive\Documentos\GitHub\Zelo\Código Fonte\Java NetBeans IDE 27\JDK 24\ZELO\src\main\java\br\com\zelo\dao\IMedicamentoDAO.java
+C:\Users\grp93\OneDrive\Documentos\GitHub\Zelo\Código Fonte\Java NetBeans IDE 27\JDK 24\ZELO\src\main\java\br\com\zelo\dao\IUsuarioDAO.java
+C:\Users\grp93\OneDrive\Documentos\GitHub\Zelo\Código Fonte\Java NetBeans IDE 27\JDK 24\ZELO\src\main\java\br\com\zelo\dao\LembreteDAO.java
+C:\Users\grp93\OneDrive\Documentos\GitHub\Zelo\Código Fonte\Java NetBeans IDE 27\JDK 24\ZELO\src\main\java\br\com\zelo\dao\MedicamentoDAO.java
+C:\Users\grp93\OneDrive\Documentos\GitHub\Zelo\Código Fonte\Java NetBeans IDE 27\JDK 24\ZELO\src\main\java\br\com\zelo\dao\UsuarioDAO.java
+C:\Users\grp93\OneDrive\Documentos\GitHub\Zelo\Código Fonte\Java NetBeans IDE 27\JDK 24\ZELO\src\main\java\br\com\zelo\model\Lembrete.java
+C:\Users\grp93\OneDrive\Documentos\GitHub\Zelo\Código Fonte\Java NetBeans IDE 27\JDK 24\ZELO\src\main\java\br\com\zelo\model\Medicamento.java
+C:\Users\grp93\OneDrive\Documentos\GitHub\Zelo\Código Fonte\Java NetBeans IDE 27\JDK 24\ZELO\src\main\java\br\com\zelo\model\Usuario.java
+C:\Users\grp93\OneDrive\Documentos\GitHub\Zelo\Código Fonte\Java NetBeans IDE 27\JDK 24\ZELO\src\main\java\br\com\zelo\service\AgendadorServico.java
+C:\Users\grp93\OneDrive\Documentos\GitHub\Zelo\Código Fonte\Java NetBeans IDE 27\JDK 24\ZELO\src\main\java\br\com\zelo\util\VerificadorFrequencia.java
+C:\Users\grp93\OneDrive\Documentos\GitHub\Zelo\Código Fonte\Java NetBeans IDE 27\JDK 24\ZELO\src\main\java\br\com\zelo\view\AlertaUI.java
+C:\Users\grp93\OneDrive\Documentos\GitHub\Zelo\Código Fonte\Java NetBeans IDE 27\JDK 24\ZELO\src\main\java\br\com\zelo\view\TelaAgendamento.java
+C:\Users\grp93\OneDrive\Documentos\GitHub\Zelo\Código Fonte\Java NetBeans IDE 27\JDK 24\ZELO\src\main\java\br\com\zelo\view\TelaCadastro.java
+C:\Users\grp93\OneDrive\Documentos\GitHub\Zelo\Código Fonte\Java NetBeans IDE 27\JDK 24\ZELO\src\main\java\br\com\zelo\view\TelaGerenciarMedicamentos.java
+C:\Users\grp93\OneDrive\Documentos\GitHub\Zelo\Código Fonte\Java NetBeans IDE 27\JDK 24\ZELO\src\main\java\br\com\zelo\view\TelaLogin.java
+C:\Users\grp93\OneDrive\Documentos\GitHub\Zelo\Código Fonte\Java NetBeans IDE 27\JDK 24\ZELO\src\main\java\br\com\zelo\view\TelaPrincipal.java
