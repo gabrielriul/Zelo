@@ -85,9 +85,9 @@ src/br/com/zelo/
 
 ### 📋 Pré-requisitos
 
-- ☕ **Java JDK 21+** (LTS recomendado)
-- 🧰 **Apache NetBeans 18+**
-- 📦 **PostgreSQL 15+**
+- ☕ **Java JDK 24** (LTS recomendado)
+- 🧰 **Apache NetBeans 27**
+- 📦 **PostgreSQL 9.8**
 - 🖥️ **pgAdmin 4** (gerenciador gráfico)
 - 🔌 **PostgreSQL JDBC Driver** (.jar)
 
