@@ -1,0 +1,9 @@
+# Arquivos compilados (Bytecode)
+/build/
+/dist/
+
+# Arquivos de cache e configuração do NetBeans
+/nbproject/private/
+/nbbuild/
+/nbdist/
+*.orig
