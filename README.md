@@ -17,13 +17,13 @@ Projeto acadêmico de Programação Orientada a Objetos 2. É um sistema de gere
 
 O sistema implementa o ciclo de vida completo do gerenciamento de medicamentos:
 
--   [cite_start][x] **Gerenciamento de Usuários:** Cadastro (RF01) e Login (RF02) de múltiplos usuários[cite: 119].
--   [cite_start][x] **CRUD de Medicamentos:** Adicionar (RF03), Listar (RF04), Editar (RF05) e Remover (RF06) medicamentos[cite: 119].
--   [cite_start][x] **Agendamento Avançado:** Criar agendamentos (RF07) com horários e frequências flexíveis (diária, dias da semana, fins de semana)[cite: 119].
--   [cite_start][x] **Painel Principal:** Visualização de todos os lembretes agendados para o dia atual (RF08)[cite: 119].
--   [cite_start][x] **Sistema de Alerta:** Disparo de um alerta visual (pop-up) em tempo real no horário programado (RF09)[cite: 119].
--   [cite_start][x] **Ações de Alerta:** Opções de "Já tomei" (RF10) e "Adiar" (RF12)[cite: 119].
--   [cite_start][x] **Feedback Visual:** Atualização automática da tela principal para indicar lembretes confirmados (RF11)[cite: 119].
+-   [cite_start] [x] **Gerenciamento de Usuários:** Cadastro (RF01) e Login (RF02) de múltiplos usuários[cite: 119].
+-   [cite_start] [x] **CRUD de Medicamentos:** Adicionar (RF03), Listar (RF04), Editar (RF05) e Remover (RF06) medicamentos[cite: 119].
+-   [cite_start] [x] **Agendamento Avançado:** Criar agendamentos (RF07) com horários e frequências flexíveis (diária, dias da semana, fins de semana)[cite: 119].
+-   [cite_start] [x] **Painel Principal:** Visualização de todos os lembretes agendados para o dia atual (RF08)[cite: 119].
+-   [cite_start] [x] **Sistema de Alerta:** Disparo de um alerta visual (pop-up) em tempo real no horário programado (RF09)[cite: 119].
+-   [cite_start] [x] **Ações de Alerta:** Opções de "Já tomei" (RF10) e "Adiar" (RF12)[cite: 119].
+-   [cite_start] [x] **Feedback Visual:** Atualização automática da tela principal para indicar lembretes confirmados (RF11)[cite: 119].
 -   [x] **Ciclo de Vida da Conta:** Funcionalidades de "Logout" e "Excluir Conta" (com exclusão em cascata `ON DELETE CASCADE` no banco de dados).
 
 ## 📋 Princípios de Design (Requisitos Não Funcionais)
@@ -37,10 +37,10 @@ O projeto foi guiado por requisitos rigorosos de qualidade, com destaque para:
 
 ## 🛠️ Tecnologias Utilizadas
 
-* **Linguagem:** Java (JDK 17+)
+* **Linguagem:** Java (JDK 24)
 * **Interface Gráfica:** Java Swing (NetBeans GUI Builder)
-* **Banco de Dados:** PostgreSQL (v9.8+)
-* **IDE:** Apache NetBeans (v12+)
+* **Banco de Dados:** PostgreSQL (v9.8)
+* **IDE:** Apache NetBeans (v27)
 * **Controle de Versão:** Git & GitHub
 
 ## 🚀 Como Executar
