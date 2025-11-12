@@ -7,9 +7,9 @@ _Sistema de gerenciamento de lembretes de medicamentos — simples, confiável e
 
 ![Status](https://img.shields.io/badge/status-concluído-green?style=flat-square)
 ![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
-![Java](https://img.shields.io/badge/java-21+-red?style=flat-square)
-![PostgreSQL](https://img.shields.io/badge/postgresql-15+-blue?style=flat-square)
-![NetBeans](https://img.shields.io/badge/IDE-NetBeans-white?style=flat-square&logo=apache-netbeans)
+![Java](https://img.shields.io/badge/java-24-red?style=flat-square)
+![PostgreSQL](https://img.shields.io/badge/postgresql-9.8-blue?style=flat-square)
+![NetBeans](https://img.shields.io/badge/IDE-NetBeans-27-white?style=flat-square&logo=apache-netbeans)
 
 </div>
 
