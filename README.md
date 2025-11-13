@@ -135,7 +135,7 @@ Os prints e protótipos do sistema podem ser visualizados nos links abaixo:
 
 O ZELO é compilado automaticamente pelo Maven. Baixe a versão mais recente:
 
-📦 **[Baixar ZELO v1.0 (.jar)](https://github.com/gabrielriul/Zelo/releases/download/v1.0/ZELO-1.0-SNAPSHOT.jar)**
+📦 **[Baixar ZELO v1.0 (.jar)]([https://github.com/gabrielriul/Zelo/releases/download/v1.0/ZELO-1.0-SNAPSHOT.jar](https://github.com/gabrielriul/Zelo/releases/tag/1.0))**
 
 ---
 
