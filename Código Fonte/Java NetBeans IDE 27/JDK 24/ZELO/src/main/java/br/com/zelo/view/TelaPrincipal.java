@@ -30,7 +30,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public TelaPrincipal(Usuario usuarioLogado) {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH); // V2: Tela Cheia
         this.setTitle("ZELO - Painel Principal");
 
         this.usuarioLogado = usuarioLogado;
@@ -87,10 +86,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ZELO - Painel Principal");
 
-        lblBoasVindas.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblBoasVindas.setFont(new java.awt.Font("Segoe UI", 1, 24));
         lblBoasVindas.setText("Bem-vindo(a), [Usuário]");
 
-        jPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lembretes de Hoje (RF08)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        jPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lembretes de Hoje", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
         jScrollPane1.setViewportView(jListLembretes);
 
@@ -106,7 +105,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         menuCadastros.setText("Cadastros");
-        menuItemMedicamentos.setText("Gerenciar Medicamentos (RF04)");
+        menuItemMedicamentos.setText("Gerenciar Medicamentos");
         menuItemMedicamentos.addActionListener(evt -> menuItemMedicamentosActionPerformed(evt));
         menuCadastros.add(menuItemMedicamentos);
         jMenuBar.add(menuCadastros);

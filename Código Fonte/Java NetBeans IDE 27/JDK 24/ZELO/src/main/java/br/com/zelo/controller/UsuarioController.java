@@ -22,7 +22,7 @@ public class UsuarioController {
         try {
             Usuario novoUsuario = new Usuario();
             novoUsuario.setNomeCompleto(nomeCompleto.trim());
-            novoUsuario.setCPF(cpf.trim()); // O DAO agora vai checar este valor
+            novoUsuario.setCPF(cpf.trim());
             novoUsuario.setUsuario(usuarioLogin.trim());
             novoUsuario.setSenha(senha); 
 
@@ -58,7 +58,6 @@ public class UsuarioController {
         }
 
         try {
-            // Delega diretamente para o DAO
             return usuarioDAO.excluir(idUsuario);
         } catch (Exception e) {
             System.err.println("Controller: Erro ao excluir usuário.");

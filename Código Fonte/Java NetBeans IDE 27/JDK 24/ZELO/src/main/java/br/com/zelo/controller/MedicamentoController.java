@@ -9,7 +9,7 @@ import java.util.List;
 
 public class MedicamentoController {
 
-    private final MedicamentoDAO medicamentoDAO; // Usamos a classe concreta para acessar métodos específicos
+    private final MedicamentoDAO medicamentoDAO;
 
     public MedicamentoController(MedicamentoDAO medicamentoDAO) {
         this.medicamentoDAO = medicamentoDAO;
@@ -30,7 +30,6 @@ public class MedicamentoController {
             novoMed.setInstrucoes(instrucoes);
             novoMed.setIdUsuario(usuarioLogado.getIdUsuario());
             
-            // Dados V2
             novoMed.setQuantidadeEstoque(estoque);
             novoMed.setQuantidadeAlerta(alerta);
 
@@ -77,8 +76,7 @@ public class MedicamentoController {
             return false;
         }
     }
-    
-    // Método V2
+
     public boolean decrementarEstoque(int idMedicamento) {
         try {
             return medicamentoDAO.decrementarEstoque(idMedicamento);
