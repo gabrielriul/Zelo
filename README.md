@@ -119,11 +119,13 @@ private static final String URL = "jdbc:postgresql://"+HOST+...+"?sslmode=requir
 |---|---|---|
 | Gabriel Riul Perisse | [@gabrielriul](https://github.com/gabrielriul) | Desenvolvedor |
 | Luan Henrique de Almeida dos Santos | [@luanalmeida7](https://github.com/luanalmeida7) | Desenvolvedor |
+
+---
  
 <div align="center">
 
 Desenvolvido com ❤️ para auxiliar quem cuida de sua saúde
 
-⬆ Voltar ao topo
+[⬆ Voltar ao topo]( #projeto-zelo-v20-cloud-edition )
 
 </div>
