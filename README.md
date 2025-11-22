@@ -104,3 +104,26 @@ private static final String DATABASE_NAME = "neondb"; // Ou ZELO
 
 // Importante: Neon exige SSL
 private static final String URL = "jdbc:postgresql://"+HOST+...+"?sslmode=require";
+```
+
+### ▶️ Passo 3: Execução
+1.  No NetBeans, execute o arquivo 'src/br.com.zelo.view/TelaLogin.java'.
+2.  O console exibirá: 'Inicializando BD (Neon)...'.
+3.  As tabelas serão criadas automaticamente na nuvem.
+
+---
+
+### 👥 Contribuidores
+
+| Nome | GitHub | Função |
+|---|---|---|
+| Gabriel Riul Perisse | [@gabrielriul](https://github.com/gabrielriul) | Desenvolvedor |
+| Luan Henrique de Almeida dos Santos | [@luanalmeida7](https://github.com/luanalmeida7) | Desenvolvedor |
+ 
+<div align="center">
+
+Desenvolvido com ❤️ para auxiliar quem cuida de sua saúde
+
+⬆ Voltar ao topo
+
+</div>
