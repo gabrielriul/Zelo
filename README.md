@@ -119,6 +119,9 @@ private static final String URL = "jdbc:postgresql://"+HOST+...+"?sslmode=requir
 |---|---|---|
 | Gabriel Riul Perisse | [@gabrielriul](https://github.com/gabrielriul) | Desenvolvedor |
 | Luan Henrique de Almeida dos Santos | [@luanalmeida7](https://github.com/luanalmeida7) | Desenvolvedor |
+| João Guilherme Nóbrega Trautwein | [@joaogntspfc](https://github.com/joaogntspfc) | Desenvolvedor |
+| José Lucas Nóbrega Trautwein | [@joselucasnt](https://github.com/joselucasnt) | Desenvolvedor |
+| Claudinei Soares Júnior | [@claudineijr18](https://github.com/claudineijr18) | Desenvolvedor |
 
 ---
  
