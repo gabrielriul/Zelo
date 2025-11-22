@@ -1,7 +1,7 @@
 package br.com.zelo.view;
 
 import br.com.zelo.controller.MedicamentoController;
-import br.com.zelo.dao.IMedicamentoDAO;
+// import br.com.zelo.dao.IMedicamentoDAO;
 import br.com.zelo.dao.MedicamentoDAO;
 import br.com.zelo.model.Medicamento;
 import br.com.zelo.model.Usuario;
@@ -19,8 +19,10 @@ public class TelaGerenciarMedicamentos extends javax.swing.JDialog {
     
     public TelaGerenciarMedicamentos(java.awt.Frame parent, boolean modal, Usuario usuarioLogado) {
         super(parent, modal);
-        IMedicamentoDAO medicamentoDAO = new MedicamentoDAO();
+        
+        MedicamentoDAO medicamentoDAO = new MedicamentoDAO(); 
         this.controller = new MedicamentoController(medicamentoDAO);
+        
         this.usuarioLogado = usuarioLogado;
         initComponents();
         this.setLocationRelativeTo(parent);
@@ -32,7 +34,7 @@ public class TelaGerenciarMedicamentos extends javax.swing.JDialog {
         this.listaMedicamentosAtual = controller.listarMedicamentosDoUsuario(usuarioLogado);
         DefaultTableModel model = new DefaultTableModel(
             new Object [][] {},
-            new String [] {"ID", "Nome", "Dosagem", "Estoque"} // V2: Coluna Estoque
+            new String [] {"ID", "Nome", "Dosagem", "Estoque"}
         ) {
             @Override
             public boolean isCellEditable(int row, int column) { return false; }
