@@ -9,6 +9,10 @@ public class Medicamento {
     private String instrucoes;
     private int idUsuario;
 
+    //--- V2: Variáveis de Estoque ---
+    private int quantidadeEstoque;
+    private int quantidadeAlerta;
+
     public Medicamento() {
     }
 
@@ -37,6 +41,14 @@ public class Medicamento {
         return idUsuario;
     }
 
+    public int getQuantidadeEstoque() {
+        return quantidadeEstoque;
+    }
+
+    public int getQuantidadeAlerta() {
+        return quantidadeAlerta;
+    }
+
     // Setters
     public void setIdMedicamento(int idMedicamento) {
         this.idMedicamento = idMedicamento;
@@ -60,5 +72,13 @@ public class Medicamento {
     
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public void setQuantidadeEstoque(int quantidadeEstoque) {
+        this.quantidadeEstoque = quantidadeEstoque;
+    }
+
+    public void setQuantidadeAlerta(int quantidadeAlerta) {
+        this.quantidadeAlerta = quantidadeAlerta;
     }
 }

@@ -13,10 +13,13 @@ import br.com.zelo.view.TelaPrincipal;
 
 import java.time.LocalTime;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 public class AgendadorServico {
@@ -26,72 +29,72 @@ public class AgendadorServico {
     private final LembreteController lembreteController;
     private final MedicamentoController medicamentoController;
     private final TelaPrincipal telaPrincipal;
+    
+    // Controle para não spamar alertas de estoque
+    private final Set<Integer> estoqueAlertadoNestaSessao;
 
     public AgendadorServico(Usuario usuarioLogado, TelaPrincipal telaPrincipal) {
         this.usuarioLogado = usuarioLogado;
         this.telaPrincipal = telaPrincipal;
-        this.lembreteController = new LembreteController(new LembreteDAO());
+        
         this.medicamentoController = new MedicamentoController(new MedicamentoDAO());
+        this.lembreteController = new LembreteController(new LembreteDAO(), this.medicamentoController);
+        
         this.timer = new Timer(true);
+        this.estoqueAlertadoNestaSessao = new HashSet<>();
     }
 
     public void iniciar() {
         TimerTask tarefa = new TimerTask() {
             @Override
             public void run() {
-                verificarAlarmes();
+                verificarLembretes();
+                verificarEstoque();
             }
         };
-        timer.scheduleAtFixedRate(tarefa, 1000L, 60000L); 
+        // Verifica a cada 60 segundos
+        timer.scheduleAtFixedRate(tarefa, 5000L, 60000L);
     }
 
     public void parar() {
         timer.cancel();
     }
 
-    private void verificarAlarmes() {
+    private void verificarLembretes() {
         LocalTime agora = LocalTime.now().withSecond(0).withNano(0);
-        System.out.println("[AgendadorServico] Verificando... " + agora);
-
+        
         try {
-            List<Lembrete> todosLembretes = lembreteController.listarLembretesDoUsuario(usuarioLogado.getIdUsuario());
-            Map<Integer, Medicamento> mapaMedicamentos = new HashMap<>();
-            List<Medicamento> medicamentos = medicamentoController.listarMedicamentosDoUsuario(usuarioLogado);
+            List<Lembrete> lembretes = lembreteController.listarLembretesDoUsuario(usuarioLogado.getIdUsuario());
             
-            for (Medicamento med : medicamentos) {
-                mapaMedicamentos.put(med.getIdMedicamento(), med);
+            // Mapeia medicamentos para acesso rápido
+            Map<Integer, Medicamento> mapaMeds = new HashMap<>();
+            for(Medicamento m : medicamentoController.listarMedicamentosDoUsuario(usuarioLogado)) {
+                mapaMeds.put(m.getIdMedicamento(), m);
             }
-            
-            for (Lembrete lembrete : todosLembretes) {
-                
-                boolean deveDisparar = false;
-                boolean statusPendente = lembrete.getStatus().equals("PENDENTE");
-                boolean statusAdiado = lembrete.getStatus().startsWith("ADIADO_ATE_");
 
-                if (statusPendente && 
-                    VerificadorFrequencia.isParaHoje(lembrete) &&
-                    lembrete.getHorario().equals(agora)) {
-                    
-                    deveDisparar = true;
+            for (Lembrete l : lembretes) {
+                boolean disparar = false;
                 
-                } else if (statusAdiado) {
-                    LocalTime horaAdiada = LocalTime.parse(lembrete.getStatus().substring(11));
+                // Lógica para status PENDENTE
+                if (l.getStatus().equals("PENDENTE") && 
+                    VerificadorFrequencia.isParaHoje(l) && 
+                    l.getHorario().equals(agora)) {
+                    disparar = true;
+                }
+                // Lógica para status ADIADO
+                else if (l.getStatus().startsWith("ADIADO_ATE_")) {
+                    LocalTime horaAdiada = LocalTime.parse(l.getStatus().substring(11));
                     if (horaAdiada.equals(agora)) {
-                        deveDisparar = true;
+                        disparar = true;
                     }
                 }
-                
-                if (deveDisparar) {
-                    System.out.println("[AgendadorServico] ALARME DISPARADO PARA: " + lembrete.getIdLembrete());
+
+                if (disparar) {
+                    lembreteController.mudarStatus(l.getIdLembrete(), "ACIONADO");
                     
-                    Medicamento med = mapaMedicamentos.get(lembrete.getIdMedicamento());
-                    
+                    Medicamento med = mapaMeds.get(l.getIdMedicamento());
                     if (med != null) {
-                        // Muda status ANTES de disparar
-                        lembreteController.mudarStatus(lembrete.getIdLembrete(), "ACIONADO");
-                        dispararAlerta(lembrete, med);
-                    } else {
-                         System.err.println("Agendador: Medicamento " + lembrete.getIdMedicamento() + " não encontrado.");
+                        dispararAlertaVisual(l, med);
                     }
                 }
             }
@@ -100,16 +103,35 @@ public class AgendadorServico {
         }
     }
 
-    private void dispararAlerta(Lembrete lembrete, Medicamento med) {
+    private void verificarEstoque() {
+        try {
+            List<Medicamento> meds = medicamentoController.listarMedicamentosDoUsuario(usuarioLogado);
+            
+            for (Medicamento m : meds) {
+                boolean estoqueBaixo = m.getQuantidadeEstoque() <= m.getQuantidadeAlerta();
+                boolean deveAlertar = m.getQuantidadeEstoque() > 0 && m.getQuantidadeAlerta() > 0;
+                boolean naoAlertado = !estoqueAlertadoNestaSessao.contains(m.getIdMedicamento());
+                
+                if (estoqueBaixo && deveAlertar && naoAlertado) {
+                    estoqueAlertadoNestaSessao.add(m.getIdMedicamento());
+                    
+                    SwingUtilities.invokeLater(() -> {
+                        JOptionPane.showMessageDialog(telaPrincipal, 
+                                "Estoque baixo para o medicamento: " + m.getNome(), 
+                                "ZELO - Alerta de Estoque", 
+                                JOptionPane.WARNING_MESSAGE);
+                    });
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void dispararAlertaVisual(Lembrete l, Medicamento m) {
         SwingUtilities.invokeLater(() -> {
-            AlertaUI popup = new AlertaUI(
-                    telaPrincipal,
-                    true, 
-                    lembrete,
-                    med,
-                    lembreteController
-            );
-            popup.setVisible(true);
+            AlertaUI alerta = new AlertaUI(telaPrincipal, true, l, m, lembreteController);
+            alerta.setVisible(true);
             
             if (telaPrincipal != null) {
                 telaPrincipal.carregarLembretesDoDia();

@@ -12,39 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LembreteDAO implements ILembreteDAO {
-
-    private final String CREATE_TABLE_SQL = 
-            "CREATE TABLE IF NOT EXISTS lembretes (" +
-            "  idLembrete SERIAL PRIMARY KEY," +
-            "  horario TIME NOT NULL," +
-            "  frequencia VARCHAR(100)," +
-            "  status VARCHAR(50) NOT NULL," +
-            "  idUsuario INT NOT NULL," +
-            "  idMedicamento INT NOT NULL," +
-            "  CONSTRAINT fk_usuario_lembrete " +
-            "    FOREIGN KEY(idUsuario) " + 
-            "    REFERENCES usuarios(idUsuario) " +
-            "    ON DELETE CASCADE," +
-            "  CONSTRAINT fk_medicamento_lembrete " +
-            "    FOREIGN KEY(idMedicamento) " + 
-            "    REFERENCES medicamentos(idMedicamento) " +
-            "    ON DELETE CASCADE" +
-            ");";
     
     public LembreteDAO() {
-        criarTabelaSeNaoExistir();
-    }
-    
-    private void criarTabelaSeNaoExistir() {
-        try (Connection conn = ConexaoBD.getConexao();
-             Statement stmt = conn.createStatement()) {
-            
-            stmt.execute(CREATE_TABLE_SQL);
-            
-        } catch (SQLException e) {
-            System.err.println("Erro ao criar tabela de lembretes:");
-            e.printStackTrace();
-        }
+        // Vazio pois o CREATE TABLE é gerenciado pela classe ConexaoBD
     }
 
     @Override

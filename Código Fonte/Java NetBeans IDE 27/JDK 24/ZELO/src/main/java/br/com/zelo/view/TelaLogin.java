@@ -16,11 +16,11 @@ public class TelaLogin extends javax.swing.JFrame {
         
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setTitle("ZELO - Acesso ao Sistema"); // Título
+        this.setTitle("ZELO - Acesso ao Sistema");
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         lbTitulo = new javax.swing.JLabel();
@@ -43,8 +43,6 @@ public class TelaLogin extends javax.swing.JFrame {
         lbSenha.setText("Senha:");
 
         lbMensagem.setText("Não tem cadastro? É só clicar no botão ao lado ->");
-
-        // O addActionListener do txtUsuario (que causava erro) foi removido.
 
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -112,12 +110,10 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getAccessibleContext().setAccessibleDescription("");
-
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {                                         
         String usuarioLogin = txtUsuario.getText();
         String senha = new String(txtSenha.getPassword());
 
@@ -127,19 +123,18 @@ public class TelaLogin extends javax.swing.JFrame {
             this.dispose(); 
             TelaPrincipal telaPrincipal = new TelaPrincipal(usuarioLogado);
             telaPrincipal.setVisible(true);
-
         } else {
             JOptionPane.showMessageDialog(this, 
                     "Usuário ou senha inválidos.", 
                     "Erro de Login", 
                     JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_btnLoginActionPerformed
+    }                                        
 
-    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {                                             
         TelaCadastro telacadastro = new TelaCadastro();
         telacadastro.setVisible(true);
-    }//GEN-LAST:event_btnCadastrarActionPerformed
+    }                                            
 
     public static void main(String args[]) {
         try {
@@ -149,9 +144,37 @@ public class TelaLogin extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            
+            // --- TEMA GLOBAL (ACESSIBILIDADE RNF01/02) ---
+            java.awt.Font fontePadrao = new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 16);
+            java.awt.Font fonteBold = new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 16);
+            java.awt.Color corFundo = new java.awt.Color(245, 245, 245);
+            java.awt.Color corTexto = new java.awt.Color(10, 10, 10);
+            java.awt.Color corInput = java.awt.Color.WHITE;
+
+            javax.swing.UIManager.put("Label.font", fontePadrao);
+            javax.swing.UIManager.put("Label.foreground", corTexto);
+            javax.swing.UIManager.put("Button.font", fonteBold);
+            javax.swing.UIManager.put("TextField.font", fontePadrao);
+            javax.swing.UIManager.put("TextField.background", corInput);
+            javax.swing.UIManager.put("PasswordField.font", fontePadrao);
+            javax.swing.UIManager.put("TextArea.font", fontePadrao);
+            javax.swing.UIManager.put("Panel.background", corFundo);
+            javax.swing.UIManager.put("OptionPane.messageFont", fontePadrao);
+            javax.swing.UIManager.put("OptionPane.buttonFont", fonteBold);
+            javax.swing.UIManager.put("Table.font", fontePadrao);
+            javax.swing.UIManager.put("Table.rowHeight", 28);
+            javax.swing.UIManager.put("TableHeader.font", fonteBold);
+            javax.swing.UIManager.put("List.font", fontePadrao);
+            javax.swing.UIManager.put("List.fixedCellHeight", 28);
+            // ---------------------------------------------
+
+        } catch (Exception ex) {
             java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        
+        // Garante criação das tabelas
+        br.com.zelo.dao.ConexaoBD.inicializarBanco();
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -160,7 +183,7 @@ public class TelaLogin extends javax.swing.JFrame {
         });
     }
     
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnLogin;
     private javax.swing.JLabel lbMensagem;
@@ -169,5 +192,5 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel lbUsuario;
     private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtUsuario;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }
