@@ -9,16 +9,15 @@ import java.util.List;
 public class LembreteController {
 
     private final ILembreteDAO lembreteDAO;
+    private final MedicamentoController medicamentoController;
 
-    public LembreteController(ILembreteDAO lembreteDAO) {
+    // Injeção de Dependência para comunicação entre controllers
+    public LembreteController(ILembreteDAO lembreteDAO, MedicamentoController medicamentoController) {
         this.lembreteDAO = lembreteDAO;
+        this.medicamentoController = medicamentoController;
     }
 
     public boolean agendarLembrete(LocalTime horario, String frequencia, int idUsuario, int idMedicamento) {
-        if (horario == null || idUsuario <= 0 || idMedicamento <= 0) {
-            System.err.println("Controller: Horário, usuário ou medicamento inválidos.");
-            return false;
-        }
         try {
             Lembrete novoLembrete = new Lembrete();
             novoLembrete.setHorario(horario);
@@ -26,64 +25,57 @@ public class LembreteController {
             novoLembrete.setIdUsuario(idUsuario);
             novoLembrete.setIdMedicamento(idMedicamento);
             novoLembrete.setStatus("PENDENTE");
+            
             return lembreteDAO.salvar(novoLembrete);
         } catch (Exception e) {
-            System.err.println("Controller: Erro ao salvar lembrete.");
             e.printStackTrace();
             return false;
         }
     }
 
     public List<Lembrete> listarLembretesDoUsuario(int idUsuario) {
-        if (idUsuario <= 0) {
-            return new ArrayList<>();
-        }
         try {
             return lembreteDAO.listarPorUsuario(idUsuario);
         } catch (Exception e) {
-            System.err.println("Controller: Erro ao listar lembretes.");
             e.printStackTrace();
             return new ArrayList<>();
-        }
-    }
-    
-    public boolean marcarComoTomado(int idLembrete) {
-        if (idLembrete <= 0) {
-            return false;
-        }
-        try {
-            return lembreteDAO.mudarStatus(idLembrete, "TOMADO");
-        } catch (Exception e) {
-            System.err.println("Controller: Erro ao marcar como tomado.");
-            e.printStackTrace();
-            return false;
         }
     }
     
     public boolean adiarLembrete(int idLembrete) {
-        if (idLembrete <= 0) {
-            return false;
-        }
         try {
+            // Adia por 5 minutos
             LocalTime horaDisparo = LocalTime.now().plusMinutes(5).withSecond(0).withNano(0);
             String novoStatus = "ADIADO_ATE_" + horaDisparo.toString();
+            
             return lembreteDAO.mudarStatus(idLembrete, novoStatus);
         } catch (Exception e) {
-            System.err.println("Controller: Erro ao adiar lembrete.");
             e.printStackTrace();
             return false;
         }
     }
     
     public boolean mudarStatus(int idLembrete, String novoStatus) {
-        if (idLembrete <= 0 || novoStatus == null || novoStatus.trim().isEmpty()) {
-            return false;
-        }
-        
         try {
             return lembreteDAO.mudarStatus(idLembrete, novoStatus);
         } catch (Exception e) {
-            System.err.println("Controller: Erro ao mudar status.");
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    // Método V2: Atualizado para decrementar estoque
+    public boolean marcarComoTomado(int idLembrete, int idMedicamento) {
+        try {
+            // 1. Atualiza o status do lembrete
+            boolean statusMudou = lembreteDAO.mudarStatus(idLembrete, "TOMADO");
+            
+            if (statusMudou) {
+                // 2. Decrementa o estoque do remédio
+                medicamentoController.decrementarEstoque(idMedicamento);
+            }
+            return statusMudou;
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }

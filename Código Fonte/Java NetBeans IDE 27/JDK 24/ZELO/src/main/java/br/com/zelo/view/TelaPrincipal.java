@@ -11,7 +11,6 @@ import br.com.zelo.model.Medicamento;
 import br.com.zelo.model.Usuario;
 import br.com.zelo.util.VerificadorFrequencia;
 import br.com.zelo.service.AgendadorServico;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,28 +21,27 @@ import javax.swing.JOptionPane;
 public class TelaPrincipal extends javax.swing.JFrame {
 
     private Usuario usuarioLogado;
-    
     private final LembreteController lembreteController;
     private final MedicamentoController medicamentoController;
+    private final UsuarioController usuarioController;
     private DefaultListModel<String> listModel;
     private final AgendadorServico agendador;
-    
-    private final UsuarioController usuarioController; // Para a exclusão
 
     public TelaPrincipal(Usuario usuarioLogado) {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH); // V2: Tela Cheia
+        this.setTitle("ZELO - Painel Principal");
 
         this.usuarioLogado = usuarioLogado;
         
-        this.lembreteController = new LembreteController(new LembreteDAO());
+        // Injeção de Dependência Cruzada
         this.medicamentoController = new MedicamentoController(new MedicamentoDAO());
-        
+        this.lembreteController = new LembreteController(new LembreteDAO(), this.medicamentoController);
         this.usuarioController = new UsuarioController(new UsuarioDAO());
         
         this.listModel = new DefaultListModel<>();
         this.jListLembretes.setModel(listModel);
-        
         lblBoasVindas.setText("Bem-vindo(a), " + this.usuarioLogado.getNomeCompleto() + "!");
         
         carregarLembretesDoDia();
@@ -54,221 +52,132 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     public void carregarLembretesDoDia() {
         listModel.clear();
-        
         List<Lembrete> todosLembretes = lembreteController.listarLembretesDoUsuario(usuarioLogado.getIdUsuario());
         List<Medicamento> todosMedicamentos = medicamentoController.listarMedicamentosDoUsuario(usuarioLogado);
-
-        Map<Integer, String> mapaMedicamentos = new HashMap<>();
-        for (Medicamento med : todosMedicamentos) {
-            mapaMedicamentos.put(med.getIdMedicamento(), med.getNome());
-        }
+        Map<Integer, String> mapaMeds = new HashMap<>();
+        for (Medicamento med : todosMedicamentos) mapaMeds.put(med.getIdMedicamento(), med.getNome());
         
-        int contagem = 0;
-        
-        for (Lembrete lembrete : todosLembretes) {
-            if (VerificadorFrequencia.isParaHoje(lembrete)) {
-                
-                String nomeMed = mapaMedicamentos.getOrDefault(lembrete.getIdMedicamento(), "Remédio Desconhecido");
-                
-                String item = String.format("%s - %s (%s)", 
-                        lembrete.getHorario().toString(), 
-                        nomeMed, 
-                        lembrete.getStatus()
-                );
-                
-                listModel.addElement(item);
-                contagem++;
+        int cont = 0;
+        for (Lembrete l : todosLembretes) {
+            if (VerificadorFrequencia.isParaHoje(l)) {
+                String nome = mapaMeds.getOrDefault(l.getIdMedicamento(), "Remédio");
+                listModel.addElement(String.format("%s - %s (%s)", l.getHorario(), nome, l.getStatus()));
+                cont++;
             }
         }
-        
-        if (contagem == 0) {
-            listModel.addElement("(Nenhum lembrete agendado para hoje)");
-        }
+        if (cont == 0) listModel.addElement("(Nenhum lembrete para hoje)");
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
-        jMenu3 = new javax.swing.JMenu();
         lblBoasVindas = new javax.swing.JLabel();
         jPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListLembretes = new javax.swing.JList<>();
-        jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
+        jMenuBar = new javax.swing.JMenuBar();
+        menuCadastros = new javax.swing.JMenu();
         menuItemMedicamentos = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        menuSistema = new javax.swing.JMenu();
         menuItemLogout = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
         menuItemExcluir = new javax.swing.JMenuItem();
-
-        jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ZELO - Painel Principal");
 
         lblBoasVindas.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblBoasVindas.setText("\"[Message]\"");
+        lblBoasVindas.setText("Bem-vindo(a), [Usuário]");
 
-        jPanel.setToolTipText("");
+        jPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lembretes de Hoje (RF08)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
-        jListLembretes.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(jListLembretes);
 
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
         jPanel.setLayout(jPanelLayout);
         jPanelLayout.setHorizontalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+            .addGroup(jPanelLayout.createSequentialGroup().addContainerGap().addComponent(jScrollPane1, -1, 376, 32767).addContainerGap())
         );
         jPanelLayout.setVerticalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(jPanelLayout.createSequentialGroup().addComponent(jScrollPane1, -1, 171, 32767).addContainerGap())
         );
 
-        jMenu2.setText("File");
+        menuCadastros.setText("Cadastros");
+        menuItemMedicamentos.setText("Gerenciar Medicamentos (RF04)");
+        menuItemMedicamentos.addActionListener(evt -> menuItemMedicamentosActionPerformed(evt));
+        menuCadastros.add(menuItemMedicamentos);
+        jMenuBar.add(menuCadastros);
 
-        jMenu1.setText("Cadastros");
+        menuSistema.setText("Sistema");
+        menuItemLogout.setText("Logout (Desconectar)");
+        menuItemLogout.addActionListener(evt -> menuItemLogoutActionPerformed(evt));
+        menuSistema.add(menuItemLogout);
+        menuSistema.add(jSeparator1);
+        menuItemExcluir.setForeground(new java.awt.Color(204, 0, 0));
+        menuItemExcluir.setText("Excluir Minha Conta");
+        menuItemExcluir.addActionListener(evt -> menuItemExcluirActionPerformed(evt));
+        menuSistema.add(menuItemExcluir);
+        jMenuBar.add(menuSistema);
 
-        menuItemMedicamentos.setText("Gerenciar Medicamentos");
-        menuItemMedicamentos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemMedicamentosActionPerformed(evt);
-            }
-        });
-        jMenu1.add(menuItemMedicamentos);
-
-        jMenu2.add(jMenu1);
-
-        jMenu4.setText("Sistema");
-
-        menuItemLogout.setText("Logout");
-        menuItemLogout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemLogoutActionPerformed(evt);
-            }
-        });
-        jMenu4.add(menuItemLogout);
-
-        menuItemExcluir.setText("Excluir Conta");
-        menuItemExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemExcluirActionPerformed(evt);
-            }
-        });
-        jMenu4.add(menuItemExcluir);
-
-        jMenu2.add(jMenu4);
-
-        jMenuBar2.add(jMenu2);
-
-        setJMenuBar(jMenuBar2);
+        setJMenuBar(jMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblBoasVindas)
-                        .addGap(0, 223, Short.MAX_VALUE))
-                    .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup().addGap(20, 20, 20)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel, -1, -1, 32767)
+            .addComponent(lblBoasVindas, -1, -1, 32767)).addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(lblBoasVindas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup().addGap(20, 20, 20)
+            .addComponent(lblBoasVindas).addGap(18, 18, 18)
+            .addComponent(jPanel, -1, -1, 32767).addGap(20, 20, 20))
         );
-
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void menuItemMedicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemMedicamentosActionPerformed
+    private void menuItemMedicamentosActionPerformed(java.awt.event.ActionEvent evt) {                                                     
         TelaGerenciarMedicamentos telaMeds = new TelaGerenciarMedicamentos(this, true, usuarioLogado);
         telaMeds.setVisible(true);
-        
         carregarLembretesDoDia();
-    }//GEN-LAST:event_menuItemMedicamentosActionPerformed
+    }                                                    
 
-    private void menuItemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemLogoutActionPerformed
-        int resposta = JOptionPane.showConfirmDialog(this, 
-                "Tem certeza que deseja desconectar?", 
-                "Confirmar Logout", 
-                JOptionPane.YES_NO_OPTION);
-        
-        if (resposta == JOptionPane.YES_OPTION) {
-            // 1. Parar o serviço de agendamento
+    private void menuItemLogoutActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        if (JOptionPane.showConfirmDialog(this, "Sair do sistema?", "Logout", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             agendador.parar();
-            
-            // 2. Fechar a tela principal
             this.dispose();
-            
-            // 3. Abrir uma nova tela de login
-            TelaLogin telaLogin = new TelaLogin();
-            telaLogin.setVisible(true);
+            new TelaLogin().setVisible(true);
         }
-    }//GEN-LAST:event_menuItemLogoutActionPerformed
+    }                                              
 
-    private void menuItemExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemExcluirActionPerformed
-        int resposta = JOptionPane.showConfirmDialog(this, 
-                "ATENÇÃO!\nEsta ação é irreversível e excluirá todos os seus dados (medicamentos, agendamentos).\nTem certeza que deseja excluir sua conta?", 
-                "Confirmar Exclusão de Conta", 
-                JOptionPane.YES_NO_OPTION, 
-                JOptionPane.WARNING_MESSAGE);
-
-        if (resposta == JOptionPane.YES_OPTION) {
-            // Chama o controller para excluir
-            boolean sucesso = usuarioController.excluirUsuario(usuarioLogado.getIdUsuario());
-
-            if (sucesso) {
-                JOptionPane.showMessageDialog(this, 
-                        "Sua conta foi excluída com sucesso.", 
-                        "Conta Excluída", 
-                        JOptionPane.INFORMATION_MESSAGE);
-
-                // Executa a mesma lógica do Logout
+    private void menuItemExcluirActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        if (JOptionPane.showConfirmDialog(this, "ATENÇÃO! Excluir conta apagará todos os dados. Continuar?", "Excluir Conta", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == JOptionPane.YES_OPTION) {
+            if (usuarioController.excluirUsuario(usuarioLogado.getIdUsuario())) {
+                JOptionPane.showMessageDialog(this, "Conta excluída.");
                 agendador.parar();
                 this.dispose();
-                TelaLogin telaLogin = new TelaLogin();
-                telaLogin.setVisible(true);
-
-            } else {
-                JOptionPane.showMessageDialog(this, 
-                        "Ocorreu um erro ao tentar excluir sua conta.", 
-                        "Erro", 
-                        JOptionPane.ERROR_MESSAGE);
+                new TelaLogin().setVisible(true);
             }
         }
-    }//GEN-LAST:event_menuItemExcluirActionPerformed
+    }                                               
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JList<String> jListLembretes;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JPanel jPanel;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JLabel lblBoasVindas;
+    private javax.swing.JMenu menuCadastros;
     private javax.swing.JMenuItem menuItemExcluir;
     private javax.swing.JMenuItem menuItemLogout;
     private javax.swing.JMenuItem menuItemMedicamentos;
-    // End of variables declaration//GEN-END:variables
+    private javax.swing.JMenu menuSistema;
+    // End of variables declaration                   
 }

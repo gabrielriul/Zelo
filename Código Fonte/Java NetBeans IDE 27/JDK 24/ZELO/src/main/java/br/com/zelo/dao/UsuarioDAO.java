@@ -10,29 +10,8 @@ import java.sql.Statement;
 
 public class UsuarioDAO implements IUsuarioDAO {
 
-    private final String CREATE_TABLE_SQL = 
-            "CREATE TABLE IF NOT EXISTS usuarios (" +
-            "  idUsuario SERIAL PRIMARY KEY," +
-            "  nomeCompleto VARCHAR(255)," +
-            "  cpf VARCHAR(20) UNIQUE NOT NULL," +
-            "  usuario VARCHAR(255) UNIQUE NOT NULL," +
-            "  senha VARCHAR(255) NOT NULL" +
-            ");";
-
     public UsuarioDAO() {
-        criarTabelaSeNaoExistir();
-    }
-    
-    private void criarTabelaSeNaoExistir() {
-        try (Connection conn = ConexaoBD.getConexao();
-            Statement stmt = conn.createStatement()) {
-            
-            stmt.execute(CREATE_TABLE_SQL);
-            
-        } catch (SQLException e) {
-            System.err.println("USUARIO DAO: Erro ao criar tabela de usuários:");
-            e.printStackTrace();
-        }
+        // Vazio pois o CREATE TABLE é gerenciado pela classe ConexaoBD
     }
 
     @Override
