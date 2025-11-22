@@ -64,7 +64,6 @@ public class LembreteController {
         }
     }
 
-    // Método V2: Atualizado para decrementar estoque
     public boolean marcarComoTomado(int idLembrete, int idMedicamento) {
         try {
             // 1. Atualiza o status do lembrete

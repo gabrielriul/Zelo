@@ -1,7 +1,6 @@
 package br.com.zelo.view;
 
 import br.com.zelo.controller.MedicamentoController;
-// import br.com.zelo.dao.IMedicamentoDAO;
 import br.com.zelo.dao.MedicamentoDAO;
 import br.com.zelo.model.Medicamento;
 import br.com.zelo.model.Usuario;
@@ -63,10 +62,10 @@ public class TelaGerenciarMedicamentos extends javax.swing.JDialog {
         txtForma = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtInstrucoes = new javax.swing.JTextArea();
-        lblEstoque = new javax.swing.JLabel(); // V2
-        lblAlerta = new javax.swing.JLabel();  // V2
-        txtEstoque = new javax.swing.JTextField(); // V2
-        txtAlerta = new javax.swing.JTextField();  // V2
+        lblEstoque = new javax.swing.JLabel();
+        lblAlerta = new javax.swing.JLabel();
+        txtEstoque = new javax.swing.JTextField();
+        txtAlerta = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
@@ -77,7 +76,7 @@ public class TelaGerenciarMedicamentos extends javax.swing.JDialog {
         tblMedicamentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {}, new String [] { "ID", "Nome", "Dosagem", "Estoque" }
         ));
-        // Listener CORRETO na Tabela
+
         tblMedicamentos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblMedicamentosMouseClicked(evt);
@@ -91,8 +90,8 @@ public class TelaGerenciarMedicamentos extends javax.swing.JDialog {
         lblDosagem.setText("Dosagem:");
         lblForma.setText("Forma:");
         lblInstrucoes.setText("Instruções:");
-        lblEstoque.setText("Qtd. em Estoque:"); // V2
-        lblAlerta.setText("Alertar com (unid.):"); // V2
+        lblEstoque.setText("Qtd. em Estoque:");
+        lblAlerta.setText("Alertar com (unid.):");
 
         txtInstrucoes.setColumns(20);
         txtInstrucoes.setRows(5);

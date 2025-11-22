@@ -35,7 +35,7 @@ public class TelaLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ZELO - Acesso ao Sistema");
 
-        lbTitulo.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lbTitulo.setFont(new java.awt.Font("Segoe UI", 1, 48));
         lbTitulo.setText("ZELO");
 
         lbUsuario.setText("Usuário:");

@@ -122,7 +122,7 @@ public class UsuarioDAO implements IUsuarioDAO {
             pstmt.setInt(1, idUsuario);
 
             int affectedRows = pstmt.executeUpdate();
-            return affectedRows > 0; // Retorna true se a linha foi deletada
+            return affectedRows > 0;
 
         } catch (SQLException e) {
             System.err.println("Erro ao excluir usuário:");

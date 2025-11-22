@@ -1,6 +1,5 @@
 br\com\zelo\controller\LembreteController.class
 br\com\zelo\model\Lembrete.class
-br\com\zelo\view\TelaPrincipal$2.class
 br\com\zelo\model\Usuario.class
 br\com\zelo\view\TelaLogin$1.class
 br\com\zelo\dao\UsuarioDAO.class
@@ -9,7 +8,6 @@ br\com\zelo\util\VerificadorFrequencia.class
 br\com\zelo\view\TelaCadastro$1.class
 br\com\zelo\view\TelaCadastro.class
 br\com\zelo\util\VerificadorFrequencia$1.class
-br\com\zelo\view\TelaGerenciarMedicamentos$5.class
 br\com\zelo\view\AlertaUI.class
 br\com\zelo\view\TelaAgendamento$1.class
 br\com\zelo\model\Medicamento.class
@@ -18,18 +16,11 @@ br\com\zelo\view\TelaLogin.class
 br\com\zelo\view\TelaLogin$3.class
 br\com\zelo\dao\LembreteDAO.class
 br\com\zelo\dao\MedicamentoDAO.class
-br\com\zelo\view\AlertaUI$2.class
 br\com\zelo\controller\MedicamentoController.class
-br\com\zelo\view\TelaGerenciarMedicamentos$3.class
 br\com\zelo\dao\ConexaoBD.class
-br\com\zelo\view\TelaPrincipal$1.class
-br\com\zelo\view\TelaGerenciarMedicamentos$4.class
-br\com\zelo\view\TelaPrincipal$3.class
 br\com\zelo\view\TelaGerenciarMedicamentos$1.class
 br\com\zelo\service\AgendadorServico.class
-br\com\zelo\view\TelaPrincipal$4.class
 br\com\zelo\view\TelaGerenciarMedicamentos$2.class
-br\com\zelo\view\AlertaUI$1.class
 br\com\zelo\dao\IMedicamentoDAO.class
 br\com\zelo\controller\UsuarioController.class
 br\com\zelo\dao\IUsuarioDAO.class

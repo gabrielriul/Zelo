@@ -87,12 +87,12 @@ public class TelaAgendamento extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("ZELO - Agendar Horários");
 
-        lblNomeMedicamento.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblNomeMedicamento.setFont(new java.awt.Font("Segoe UI", 1, 18));
         lblNomeMedicamento.setText("Agendamentos para: [Medicamento]");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Novo Agendamento (RF07)"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Novo Agendamento"));
 
-        lblHorario.setText("Horário (HH:mm):");
+        lblHorario.setText("Horário (HH:MM):");
         jLabel1.setText("Frequência:");
         btnAdicionarHorario.setText("Adicionar Horário");
         
@@ -126,7 +126,6 @@ public class TelaAgendamento extends javax.swing.JDialog {
         jScrollPane1.setViewportView(jListHorarios);
 
         btnConcluir.setText("Concluir");
-        // Listener Adicionado
         btnConcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConcluirActionPerformed(evt);
@@ -163,7 +162,7 @@ public class TelaAgendamento extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, "Erro ou duplicidade.", "Erro", JOptionPane.ERROR_MESSAGE);
             }
         } catch (DateTimeParseException e) {
-            JOptionPane.showMessageDialog(this, "Horário inválido (HH:mm).", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Horário inválido (HH:MM).", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }                                                   
 

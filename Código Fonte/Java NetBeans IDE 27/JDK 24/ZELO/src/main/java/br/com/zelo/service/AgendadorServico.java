@@ -52,8 +52,8 @@ public class AgendadorServico {
                 verificarEstoque();
             }
         };
-        // Verifica a cada 60 segundos
-        timer.scheduleAtFixedRate(tarefa, 5000L, 60000L);
+        // Verifica a cada 10 segundos
+        timer.scheduleAtFixedRate(tarefa, 5000L, 10000L);
     }
 
     public void parar() {

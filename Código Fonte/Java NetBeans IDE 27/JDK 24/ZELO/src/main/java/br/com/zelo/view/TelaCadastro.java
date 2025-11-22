@@ -39,11 +39,11 @@ public class TelaCadastro extends javax.swing.JFrame {
         lbTitulo.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         lbTitulo.setText("ZELO");
 
-        lbNome.setText("Nome:");
+        lbNome.setText("Nome Completo:");
 
         lbCPF.setText("CPF:");
 
-        lbUsuario.setText("Usuário:");
+        lbUsuario.setText("Login:");
 
         lbSenha.setText("Senha:");
 
@@ -126,7 +126,7 @@ public class TelaCadastro extends javax.swing.JFrame {
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(this, 
-                    "Erro ao cadastrar. Verifique se o usuário (login) já existe ou se os campos estão preenchidos.", 
+                    "Erro ao cadastrar. Verifique se o Login e/ou CPF já existem ou se os campos estão preenchidos.", 
                     "Erro", 
                     JOptionPane.ERROR_MESSAGE);
         }
