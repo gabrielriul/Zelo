@@ -14,7 +14,7 @@ public class ConexaoBD {
     private static final String USER = "neondb_owner";
     
     // COLOQUE SUA SENHA AQUI
-    private static final String PASSWORD = "npg_AdMeWfHwD90S"; 
+    private static final String PASSWORD = "SUA_SENHA_AQUI"; 
     
     // URL com SSL obrigatório para o Neon
     private static final String URL = "jdbc:postgresql://" + HOST + ":" + PORT + "/" + DATABASE_NAME + "?sslmode=require";
